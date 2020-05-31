@@ -1,0 +1,7 @@
+node_modules
+build
+prod/server
+.secret
+package-lock.json
+.DS_Store
+.txt
