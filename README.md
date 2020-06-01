@@ -1,4 +1,10 @@
 # BlockChain Developer-Capstone 
+
+## Special Thanks
+Special thanks to Mr. StefanelStan, https://github.com/StefanelStan/Blockchain-Capstone-Real-Estate-Marketplace, your code give me one workable environment, helped me step through each step and give me a deep understanding of what this project is all about, which I can't get from the course. 
+Thanks for Ireade, https://github.com/ireade/nd1309-real-estate-marketplace, your code give me another idea how to work on the code. 
+Thanks for Mr. Alvaro Andres Pinzon Cortes, https://medium.com/@andresaaap/capstone-real-estate-marketplace-project-faq-udacity-blockchain-69fe13b4c14e, without this article, I can't find the way to really understande the verifier usage methodology.
+
 ## Dependency
 1. Solidity - solc: 0.5.5+commit.47a71e8f.Emscripten.clang
 2. Node version: v12.16.3
@@ -12,9 +18,6 @@ Once the token has been verified you will place it on a blockchain market place 
 ## Contract deployment information on rinkeby as follows:
 ===========================
 > Everything is up to date, there is nothing to compile.
-
-
-
 Starting migrations...
 ======================
 > Network name:    'rinkeby'
@@ -25,15 +28,15 @@ Starting migrations...
 1_initial_migration.js
 ======================
 
-   Replacing 'Migrations'
+   Deploying 'Migrations'
    ----------------------
-   > transaction hash:    0xb1490f439b8ef2e8968327dedf1ef97b1109ec240d8f0bbe18781d6ca6c2575c
-   > Blocks: 0            Seconds: 6
-   > contract address:    0x701F9D11B9029d7d38575a4d02CBDB81f11424e2
-   > block number:        6585708
-   > block timestamp:     1590941090
+   > transaction hash:    0x61fa11374e1706fd1db326e3fc935a041ae18a0216acf763bbef01dbefc84889
+   > Blocks: 0            Seconds: 14
+   > contract address:    0x7E8D2bfa58Cbc60f57B8a16Cf6f8A24805A20170
+   > block number:        6591510
+   > block timestamp:     1591028120
    > account:             0xE2fc9338fF8E2EBe595Ca1eDb7936d3B8e8CA032
-   > balance:             4.2893687145
+   > balance:             4.1833558895
    > gas used:            223281 (0x36831)
    > gas price:           200 gwei
    > value sent:          0 ETH
@@ -49,46 +52,46 @@ Starting migrations...
 2_deploy_contracts.js
 =====================
 
-   Replacing 'Verifier'
+   Deploying 'Verifier'
    --------------------
-   > transaction hash:    0x0f51b8ac1bcd3347798d066d80b97826787aa50d90c576a2a0558e7a6f0e884f
-   > Blocks: 0            Seconds: 6
-   > contract address:    0x2590833ed5cF19a14C6bCF16dB2E4EcC3e862d30
-   > block number:        6585710
-   > block timestamp:     1590941120
+   > transaction hash:    0x5340342f28933cdadff45f424c1c8de79b756b8753baec7557677e9bf6fcc1f2
+   > Blocks: 1            Seconds: 18
+   > contract address:    0x9E86822fcCee6dBccfcd7403f1e9180584DB569c
+   > block number:        6591513
+   > block timestamp:     1591028165
    > account:             0xE2fc9338fF8E2EBe595Ca1eDb7936d3B8e8CA032
-   > balance:             3.9935307145
+   > balance:             3.8875178895
    > gas used:            1436827 (0x15ec9b)
    > gas price:           200 gwei
    > value sent:          0 ETH
    > total cost:          0.2873654 ETH
 
 
-   Replacing 'SolnSquareVerifier'
+   Deploying 'SolnSquareVerifier'
    ------------------------------
-   > transaction hash:    0x31c97d4122ee02a19e90b248a419430286588bc4be82a8885fd483e2bddfca49
-   > Blocks: 0            Seconds: 17
-   > contract address:    0xB43AeB57241c0f1fF53209D1a601E86b726897B5
-   > block number:        6585712
-   > block timestamp:     1590941150
+   > transaction hash:    0x426895e5cbd017e5d429802a0e83069fe79173c0cfc802fc33fa7656d4363365
+   > Blocks: 1            Seconds: 18
+   > contract address:    0x62D0DF9AAF3A770d173897fBE7690b499E2302dc
+   > block number:        6591515
+   > block timestamp:     1591028195
    > account:             0xE2fc9338fF8E2EBe595Ca1eDb7936d3B8e8CA032
-   > balance:             3.2627937145
-   > gas used:            3653685 (0x37c035)
+   > balance:             3.1367362895
+   > gas used:            3753908 (0x3947b4)
    > gas price:           200 gwei
    > value sent:          0 ETH
-   > total cost:          0.730737 ETH
+   > total cost:          0.7507816 ETH
 
 
    > Saving migration to chain.
    > Saving artifacts
    -------------------------------------
-   > Total cost:           1.0181024 ETH
+   > Total cost:            1.038147 ETH
 
 
 Summary
 =======
 > Total deployments:   3
-> Final cost:          1.0627586 ETH
+> Final cost:          1.0828032 ETH
 
 ## Contract ABI
  Can be found in `eth-contracts/build/contracts` folder.
@@ -128,6 +131,7 @@ Fill in infuraKey and mnemonic into eth-contracts/config/ .
 `~/zokrates compute-witness -a number square`
 `~/zokrates generate-proof` 
 `~/zokrates export-verifier`
+
 
 # Project Resources
 
@@ -630,11 +634,28 @@ Fill in infuraKey and mnemonic into eth-contracts/config/ .
         },
         {
           "indexed": true,
-          "name": "acount",
+          "name": "account",
           "type": "address"
         }
       ],
       "name": "SolutionAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "tokenID",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "TokenMinted",
       "type": "event"
     },
     {
@@ -782,20 +803,10 @@ Fill in infuraKey and mnemonic into eth-contracts/config/ .
         {
           "name": "input",
           "type": "uint256[2]"
-        }
-      ],
-      "name": "addSolution",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
+        },
         {
-          "name": "input",
-          "type": "uint256[2]"
+          "name": "_tokenID",
+          "type": "uint256"
         }
       ],
       "name": "mintNewNFT",
